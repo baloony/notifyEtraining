@@ -15,18 +15,27 @@ class Parse(object):
 
 class Mail(object):
     @staticmethod
-    def sendMail(date):
-        cmd = 'echo E-usavršavanje termina za 8 dana - ' + date + ' |  mail -s "E-Usavrsavanje - Termin" ivan.esterajher@ztm.hr '
+    def sendMailPotpisne(date):
+        cmd = 'echo E-usavršavanje termin za 8 dana - ' + date + '. Pripremi potpisne liste |  mail -s "E-Usavrsavanje - potpisne liste" ivan.esterajher@ztm.hr '
         os.system(cmd)
-        #os.system('echo "E-usavršavanje termin za 8 dana - ' + date + '" | mail -s "E-Usavrsavanje - Termin" ivan.esterajher@ztm.hr ')
+
+    @staticmethod
+    def sendMailPotpisne():
+        cmd = 'echo E-usavršavanje termin je danas u 13:00h  |  mail -s "E-Usavrsavanje - Termin" ivan.esterajher@ztm.hr '
+        os.system(cmd)
+
 
 
 class Notify(object):
     def __init__(self, dates):
-        self.date = datetime.datetime.today() #+ datetime.timedelta(days=8)
-        self.date = self.date.strftime("%d.%m.%Y")  # Mora ici plus 8 dana jos
+        self.date = datetime.datetime.today() + datetime.timedelta(days=8)
+        self.date = self.date.strftime("%d.%m.%Y")
+        self.today = datetime.datetime.today().strftime("%d.%m.%Y")
         if self.date in dates:
-            Mail.sendMail(self.date)
+            Mail.sendMailPotpisne(self.date)
+        if self.today in dates:
+            Mail.sendMailObavijest()
+
 
 
 def main():
