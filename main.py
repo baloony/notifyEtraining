@@ -1,5 +1,5 @@
 #! python3
-import re, requests, datetime, smtplib, os
+import re, requests, datetime, os
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
@@ -14,14 +14,15 @@ class Parse(object):
         return self.regex.findall(self.data)
 
 class Mail(object):
+    mail = "email@ztm.hr"
     @staticmethod
     def sendMailPotpisne(date):
-        cmd = 'echo Termin E-usavršavanja je za 8 dana - ' + date + '. Pripremi potpisne liste |  mail -s "E-Usavrsavanje - potpisne liste" tehnika@ztm.hr'
+        cmd = 'echo Termin E-usavršavanja je za 8 dana - ' + date + '. Pripremi potpisne liste |  mail -s "E-Usavrsavanje - potpisne liste" ' + mail
         os.system(cmd)
 
     @staticmethod
     def sendMailObavijest():
-        cmd = 'echo Termin E-usavršavanja je danas u 13:00h  |  mail -s "E-Usavrsavanje - Termin" tehnika@ztm.hr'
+        cmd = 'echo Termin E-usavršavanja je danas u 13:00h  |  mail -s "E-Usavrsavanje - Termin" ' + mail
         os.system(cmd)
 
 
