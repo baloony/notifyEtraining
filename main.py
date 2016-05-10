@@ -15,15 +15,16 @@ class Parse(object):
 
 class Mail(object):
     @staticmethod
-    def sendMail():
-        os.system('mail -s "E-Usavrsavanje - Termin" ivan.esterajher@ztm.hr <<< proba')
+    def sendMail(date):
+        os.system('echo "E-usavršavanje termin za 8 dana - ' + date + ' | mail -s "E-Usavrsavanje - Termin" ivan.esterajher@ztm.hr ')
 
 
 class Notify(object):
     def __init__(self, dates):
-        self.today = datetime.datetime.today().strftime("%d.%m.%Y")  # Mora ici plus 8 dana jos
-        if self.today in dates:
-            Mail.sendMail()
+        self.date = datetime.datetime.today() + datetime.timedelta(days=8)
+        self.date = self.date.strftime("%d.%m.%Y")  # Mora ici plus 8 dana jos
+        if self.date in dates:
+            Mail.sendMail(self.date)
 
 
 def main():
