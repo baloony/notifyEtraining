@@ -16,7 +16,7 @@ class Parse(object):
 class Mail(object):
     @staticmethod
     def sendMail():
-        os.system('mail -s "E-Usavrsavanje - Termin" ivan.esterajher@ztm.hr proba')
+        os.system('mail -s "E-Usavrsavanje - Termin" ivan.esterajher@ztm.hr <<< proba')
 
 
 class Notify(object):
