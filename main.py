@@ -16,12 +16,12 @@ class Parse(object):
 class Mail(object):
     @staticmethod
     def sendMailPotpisne(date):
-        cmd = 'echo E-usavršavanje termin za 8 dana - ' + date + '. Pripremi potpisne liste |  mail -s "E-Usavrsavanje - potpisne liste" tehnika@ztm.hr'
+        cmd = 'echo Termin E-usavršavanja je za 8 dana - ' + date + '. Pripremi potpisne liste |  mail -s "E-Usavrsavanje - potpisne liste" tehnika@ztm.hr'
         os.system(cmd)
 
     @staticmethod
     def sendMailObavijest():
-        cmd = 'echo E-usavršavanje termin je danas u 13:00h  |  mail -s "E-Usavrsavanje - Termin" tehnika@ztm.hr'
+        cmd = 'echo Termin E-usavršavanja je danas u 13:00h  |  mail -s "E-Usavrsavanje - Termin" tehnika@ztm.hr'
         os.system(cmd)
 
 
