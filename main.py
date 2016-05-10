@@ -20,7 +20,7 @@ class Mail(object):
         os.system(cmd)
 
     @staticmethod
-    def sendMailPotpisne():
+    def sendMailObavijest():
         cmd = 'echo E-usavršavanje termin je danas u 13:00h  |  mail -s "E-Usavrsavanje - Termin" ivan.esterajher@ztm.hr '
         os.system(cmd)
 
